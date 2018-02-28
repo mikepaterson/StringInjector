@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.rosterbot.string.injector" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>StringInjector</name>
+    <js-module name="StringInjector" src="www/StringInjector.js">
+        <clobbers target="StringInjector" />
+    </js-module>
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="StringInjector">
+                <param name="ios-package" value="RBStringInjector" />
+                <param name="onload" value="false" />
+            </feature>
+        </config-file>
+        <header-file src="src/ios/RBStringInjector.h" />
+        <source-file src="src/ios/RBStringInjector.m" />
+    </platform>
+
+    <platform name="android">
+        <config-file target="config.xml" parent="/*">
+             <feature name="StringInjector">
+                <param name="android-package" value="org.apache.cordova.plugin.RBStringInjector" />
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/RBStringInjector.java" target-dir="src/org/apache/cordova/plugin" />
+
+    </platform>
+</plugin>
