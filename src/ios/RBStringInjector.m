@@ -27,17 +27,6 @@ static NSDictionary* injectables = nil;
     }
 
     NSString* injectable = [self.commandDelegate.settings objectForKey:[getKey lowercaseString]];
-
-    /*
-    if(!getKey || ![injectables objectForKey:getKey])
-    {
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-        return;
-    }
-
-    NSString *injectable = [injectables objectForKey:getKey];
-    */
-    
     if(!injectable)
     {
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
