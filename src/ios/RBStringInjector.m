@@ -19,6 +19,16 @@ static NSDictionary* injectables = nil;
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
 
     NSString *getKey = [command.arguments objectAtIndex:0];
+
+    if(!getKey || ![self.commandDelegate.settings objectForKey:getKey])
+    {
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        return;
+    }
+
+    NSString* injectable = [self.commandDelegate.settings objectForKey:getKey];
+
+    /*
     if(!getKey || ![injectables objectForKey:getKey])
     {
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
@@ -26,6 +36,8 @@ static NSDictionary* injectables = nil;
     }
 
     NSString *injectable = [injectables objectForKey:getKey];
+    */
+    
     if(!injectable)
     {
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
