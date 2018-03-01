@@ -20,13 +20,13 @@ static NSDictionary* injectables = nil;
 
     NSString *getKey = [command.arguments objectAtIndex:0];
 
-    if(!getKey || ![self.commandDelegate.settings objectForKey:getKey])
+    if(!getKey || ![self.commandDelegate.settings objectForKey:[getKey lowercaseString]])
     {
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         return;
     }
 
-    NSString* injectable = [self.commandDelegate.settings objectForKey:getKey];
+    NSString* injectable = [self.commandDelegate.settings objectForKey:[getKey lowercaseString]];
 
     /*
     if(!getKey || ![injectables objectForKey:getKey])
