@@ -14,8 +14,8 @@ public class RBStringInjector extends CordovaPlugin
     static
     {
         ;
-        injectables.put("oAuthClientId", getActivity().getIntent().getStringExtra("oAuthClientId"));
-        injectables.put("oAuthClientSecret", getActivity().getIntent().getStringExtra("oAuthClientSecret"));
+        injectables.put("oAuthClientId", this.cordova.getActivity().getIntent().getStringExtra("oAuthClientId"));
+        injectables.put("oAuthClientSecret", this.cordova.getActivity().getIntent().getStringExtra("oAuthClientSecret"));
     }
 
     /**
