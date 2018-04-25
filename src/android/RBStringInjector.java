@@ -13,8 +13,9 @@ public class RBStringInjector extends CordovaPlugin
     private static final Map<String, String> injectables = new HashMap<String, String>();
     static
     {
-        injectables.put("oAuthClientId", "");
-        injectables.put("oAuthClientSecret", "");
+        ;
+        injectables.put("oAuthClientId", getActivity().getIntent().getStringExtra("oAuthClientId"));
+        injectables.put("oAuthClientSecret", getActivity().getIntent().getStringExtra("oAuthClientSecret"));
     }
 
     /**
