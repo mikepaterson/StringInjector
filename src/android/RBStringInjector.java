@@ -7,6 +7,7 @@ import org.json.JSONException;
 
 import java.util.HashMap;
 import java.util.Map;
+import android.util.Log;
 
 public class RBStringInjector extends CordovaPlugin
 {
@@ -49,12 +50,14 @@ public class RBStringInjector extends CordovaPlugin
         if (key.length() > 0)
         {
             if(key=="oAuthClientId") {
-                res = this.cordova.getActivity().getIntent().getStringExtra("oAuthClientId");
+                res = this.cordova.getActivity().getIntent().getStringExtra("oauthclientid");
             } else if(key=="oAuthClientSecret") {
-                res = this.cordova.getActivity().getIntent().getStringExtra("oAuthClientSecret");
+                res = this.cordova.getActivity().getIntent().getStringExtra("oauthclientsecret");
             } else {
                 res = injectables.get(key);
             }
+            
+            Log.w("rosterbot - stringinjector", key+" : "+res);
         }
         return res;
     }
