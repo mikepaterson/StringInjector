@@ -14,8 +14,8 @@ public class RBStringInjector extends CordovaPlugin
     static
     {
         ;
-        injectables.put("oAuthClientId", this.cordova.getActivity().getIntent().getStringExtra("oAuthClientId"));
-        injectables.put("oAuthClientSecret", this.cordova.getActivity().getIntent().getStringExtra("oAuthClientSecret"));
+//         injectables.put("oAuthClientId", this.cordova.getActivity().getIntent().getStringExtra("oAuthClientId"));
+//         injectables.put("oAuthClientSecret", this.cordova.getActivity().getIntent().getStringExtra("oAuthClientSecret"));
     }
 
     /**
@@ -48,7 +48,12 @@ public class RBStringInjector extends CordovaPlugin
         String res = "";
         if (key.length() > 0)
         {
-            res = injectables.get(key);
+            if(key=="oAuthClientId")
+                res = this.cordova.getActivity().getIntent().getStringExtra("oAuthClientId"))
+            elseif(key=="oAuthClientSecret")
+                res = this.cordova.getActivity().getIntent().getStringExtra("oAuthClientSecret"))
+            else
+                res = injectables.get(key);
         }
         return res;
     }
